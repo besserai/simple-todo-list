@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+import TextField from '@mui/material/TextField';
+import NavBar from './components/NavBar';
+import { v4 as uuid } from 'uuid';
+import { useState } from 'react';
+import TodoList from './components/TodoList';
+
 
 function App() {
+
+  const [itemList, setItemList] = useState([{ "id": uuid(), "name": "clean", "done": false },
+  { "id": uuid(), "name": "shopping", "done": true }]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      {/* <NavBar /> */}
+
+      <div className='todo-list'>
+
+        <h1>Todos</h1>
+
+        <TodoList itemList={itemList} setItemList={setItemList} />
+
+      </div >
+
+    </div >
   );
 }
 
